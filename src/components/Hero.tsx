@@ -342,7 +342,7 @@ const Hero: React.FC = () => {
                         }
                     }}
                 >
-                    <img src="https://i.gifer.com/QHG.gif" alt="Animated GIF" />
+                    <img src="/QHG.gif" alt="Animated GIF" />
                 </GifContainer>
             </StyledContainer>
         </HeroSection>
