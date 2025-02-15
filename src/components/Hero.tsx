@@ -342,11 +342,11 @@ const Hero: React.FC = () => {
                         }
                     }}
                 >
-                    <img src="/QHG.gif" alt="Animated GIF" />
+                    <img src="/public/QHG.gif" alt="Animated GIF" />
                 </GifContainer>
             </StyledContainer>
         </HeroSection>
     );
 };
 
-export default Hero; 
+export default Hero;
