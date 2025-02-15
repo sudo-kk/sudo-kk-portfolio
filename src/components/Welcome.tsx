@@ -66,7 +66,7 @@ interface WelcomeProps {
 
 const Welcome: React.FC<WelcomeProps> = ({ onComplete }) => {
     const [typedText, setTypedText] = useState('');
-    const fullText = 'test10101.pages.dev';
+    const fullText = 'sudo-kk.pages.dev';
 
     useEffect(() => {
         let currentIndex = 0;
