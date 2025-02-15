@@ -7,16 +7,10 @@ const ProjectsSection = styled.section`
     width: 100%;
     min-height: 100vh;
     padding: 100px 0;
-<<<<<<< HEAD
     background: transparent;
     position: relative;
     overflow: visible;
     z-index: 2;
-=======
-    background: ${({ theme }) => theme.colors.background};
-    position: relative;
-    overflow: hidden;
->>>>>>> 0085b5437c39ac88e032f184515ffa638d5b049c
 `;
 
 const ProjectsContainer = styled(Container)`
@@ -27,11 +21,7 @@ const ProjectsContainer = styled(Container)`
     min-height: calc(100vh - 200px);
     gap: 3rem;
     position: relative;
-<<<<<<< HEAD
     z-index: 2;
-=======
-    z-index: 1;
->>>>>>> 0085b5437c39ac88e032f184515ffa638d5b049c
 `;
 
 const SectionTitle = styled(motion.h2)`
