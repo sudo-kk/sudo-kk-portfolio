@@ -9,6 +9,11 @@ export interface Work {
     description: string;
     image: string;
     tags: string[];
+    slug: string;
+    featured: boolean;
+    category: 'ai' | 'cybersecurity' | 'web' | 'mobile';
+    liveUrl: string;
+    githubUrl: string;
 }
 
 export interface Skill {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { theme } from './styles/theme';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeContextProvider } from './contexts/ThemeContext';
 import { GlobalStyles } from './styles/GlobalStyles';
 import Background from './components/Background';
 import Navbar from './components/Navbar';
@@ -10,6 +10,9 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Welcome from './components/Welcome';
 import Projects from './components/Projects';
+import ProjectDetail from './components/ProjectDetail';
+import ThemeToggle from './components/ThemeToggle';
+import ScrollToTop from './components/ScrollToTop';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -33,6 +36,38 @@ const ContentContainer = styled(motion.div)`
     background: ${({ theme }) => theme.colors.background};
 `;
 
+const HomePage: React.FC = () => (
+    <MainContent
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+            duration: 0.3,
+            delay: 0.1,
+            ease: "easeOut"
+        }}
+    >
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+    </MainContent>
+);
+
+const ProjectPage: React.FC = () => (
+    <MainContent
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+            duration: 0.3,
+            delay: 0.1,
+            ease: "easeOut"
+        }}
+    >
+        <ProjectDetail />
+    </MainContent>
+);
+
 const App: React.FC = () => {
     const [showWelcome, setShowWelcome] = useState(true);
 
@@ -41,44 +76,37 @@ const App: React.FC = () => {
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <GlobalStyles />
-            <PageWrapper>
-                <Background />
-                <AnimatePresence mode="wait">
-                    {showWelcome ? (
-                        <Welcome key="welcome" onComplete={handleWelcomeComplete} />
-                    ) : (
-                        <ContentContainer
-                            key="content"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{
-                                duration: 0.3,
-                                ease: "easeOut"
-                            }}
-                        >
-                            <Navbar />
-                            <MainContent
+        <ThemeContextProvider>
+            <Router>
+                <ScrollToTop />
+                <GlobalStyles />
+                <PageWrapper>
+                    <Background />
+                    <ThemeToggle />
+                    <AnimatePresence mode="wait">
+                        {showWelcome ? (
+                            <Welcome key="welcome" onComplete={handleWelcomeComplete} />
+                        ) : (
+                            <ContentContainer
+                                key="content"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{
                                     duration: 0.3,
-                                    delay: 0.1,
                                     ease: "easeOut"
                                 }}
                             >
-                                <Hero />
-                                <About />
-                                <Projects />
-                                <Skills />
-                                <Contact />
-                            </MainContent>
-                        </ContentContainer>
-                    )}
-                </AnimatePresence>
-            </PageWrapper>
-        </ThemeProvider>
+                                <Navbar />
+                                <Routes>
+                                    <Route path="/" element={<HomePage />} />
+                                    <Route path="/project/:slug" element={<ProjectPage />} />
+                                </Routes>
+                            </ContentContainer>
+                        )}
+                    </AnimatePresence>
+                </PageWrapper>
+            </Router>
+        </ThemeContextProvider>
     );
 };
 

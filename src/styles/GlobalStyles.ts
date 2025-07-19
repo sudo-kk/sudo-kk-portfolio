@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
 
 export const GlobalStyles = createGlobalStyle`
     * {
@@ -18,13 +17,34 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        font-family: ${theme.fonts.primary};
-        background: ${theme.colors.background};
-        color: ${theme.colors.text};
+        font-family: ${({ theme }) => theme.fonts.primary};
+        background: ${({ theme }) => theme.colors.background};
+        color: ${({ theme }) => theme.colors.text};
         overflow-x: hidden;
         min-height: 100%;
         position: relative;
         -webkit-overflow-scrolling: touch;
+    }
+
+    /* Enhanced text readability for holographic cards */
+    .holographic-text {
+        text-shadow: ${({ theme }) => 
+            theme.colors.background === '#0A0A0F' 
+                ? '0 0 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.5)' 
+                : 'none'
+        };
+        font-weight: 500;
+        letter-spacing: 0.02em;
+    }
+
+    .holographic-title {
+        text-shadow: ${({ theme }) => 
+            theme.colors.background === '#0A0A0F' 
+                ? '0 0 15px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 0, 0, 0.6)' 
+                : 'none'
+        };
+        font-weight: 600;
+        letter-spacing: 0.03em;
     }
 
     @keyframes gradient {
@@ -46,19 +66,35 @@ export const GlobalStyles = createGlobalStyle`
         }
         20% {
             transform: translate(-2px, 2px);
-            text-shadow: 2px 2px ${theme.colors.secondary};
+            text-shadow: ${({ theme }) => 
+                theme.colors.primary === '#FF6B35' 
+                    ? 'none' 
+                    : `2px 2px ${theme.colors.secondary}`
+            };
         }
         40% {
             transform: translate(-2px, -2px);
-            text-shadow: 2px -2px ${theme.colors.primary};
+            text-shadow: ${({ theme }) => 
+                theme.colors.primary === '#FF6B35' 
+                    ? 'none' 
+                    : `2px -2px ${theme.colors.primary}`
+            };
         }
         60% {
             transform: translate(2px, 2px);
-            text-shadow: -2px 2px ${theme.colors.secondary};
+            text-shadow: ${({ theme }) => 
+                theme.colors.primary === '#FF6B35' 
+                    ? 'none' 
+                    : `-2px 2px ${theme.colors.secondary}`
+            };
         }
         80% {
             transform: translate(2px, -2px);
-            text-shadow: -2px -2px ${theme.colors.primary};
+            text-shadow: ${({ theme }) => 
+                theme.colors.primary === '#FF6B35' 
+                    ? 'none' 
+                    : `-2px -2px ${theme.colors.primary}`
+            };
         }
         100% {
             transform: translate(0);

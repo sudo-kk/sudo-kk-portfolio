@@ -1,24 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Container, GlassCard } from '../styles/StyledComponents';
+import { Container } from '../styles/StyledComponents';
 import CertModal from './CertModal';
+import HolographicCard from './HolographicCard';
+import NetworkNodes from './NetworkNodes';
 
 const AboutSection = styled.section`
     padding: 3rem 0;
     position: relative;
+    overflow: hidden;
+`;
+
+const AboutContainer = styled(Container)`
+    position: relative;
+    z-index: 2;
 `;
 
 const SectionTitle = styled(motion.h2)`
     text-align: center;
     margin-bottom: 2rem;
     font-size: 2.5rem;
+    background: linear-gradient(45deg, 
+        ${({ theme }) => theme.colors.primary}, 
+        ${({ theme }) => theme.colors.secondary}
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    filter: ${({ theme }) => 
+        theme.colors.primary === '#FF6B35' 
+            ? 'none' 
+            : `drop-shadow(0 0 10px ${theme.colors.primary}50)`
+    };
 `;
 
-const AboutContent = styled(GlassCard)`
+const AboutContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    position: relative;
+    z-index: 2;
 `;
 
 const AboutText = styled.div`
@@ -32,13 +55,26 @@ const AboutText = styled.div`
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+        text-shadow: none;
+        filter: ${({ theme }) => 
+            theme.colors.primary === '#FF6B35' 
+                ? 'none' 
+                : 'drop-shadow(0 0 10px rgba(108, 99, 255, 0.5))'
+        };
     }
 
     p {
         font-size: 1.1rem;
         line-height: 1.8;
         margin-bottom: 1.5rem;
-        opacity: 0.9;
+        opacity: 0.95;
+        color: ${({ theme }) => theme.colors.text};
+        text-shadow: ${({ theme }) => 
+            theme.colors.primary === '#FF6B35' 
+                ? 'none' 
+                : '0 0 8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.6)'
+        };
+        font-weight: 450;
     }
 `;
 
@@ -120,6 +156,18 @@ const About: React.FC = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCert, setSelectedCert] = useState('');
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const openModal = (cert: string) => {
         setSelectedCert(cert);
@@ -133,7 +181,8 @@ const About: React.FC = () => {
 
     return (
         <AboutSection id="about">
-            <Container>
+            <NetworkNodes section="about" isVisible={true} />
+            <AboutContainer>
                 <SectionTitle
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -142,67 +191,69 @@ const About: React.FC = () => {
                 >
                     About Me
                 </SectionTitle>
-                <AboutContent
-                    as={motion.div}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                >
-                    <AboutText>
-                        <h3>Student Coder & Cybersecurity Enthusiast</h3>
-                        <p>
-                            Hi there! I'm Karthik V K, a passionate student coder and cybersecurity enthusiast.
-                            I create projects like phishing awareness tools and a plant disease identification website.
-                        </p>
-                        <p>
-                            Currently in Class 12 at Bharatiya Vidya Bhavan, graduating in 2025. I'm deeply interested
-                            in exploring technology and cybersecurity to make the digital world safer.
-                        </p>
-                        <p>
-                            My projects combine creativity with technical skills, focusing on real-world applications
-                            that can make a difference. Whether it's developing security tools or working on AI-powered
-                            plant disease detection, I'm always eager to learn and innovate.
-                        </p>
-                    </AboutText>
-                    <TechStack>
-                        <h4>Tech Stack</h4>
-                        <div className="tech-grid">
-                            {techStack.map((tech, index) => (
-                                <motion.div
-                                    key={tech}
-                                    className="tech-item"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.05 }}
-                                    whileHover={{ scale: 1.05 }}
-                                >
-                                    {tech}
-                                </motion.div>
-                            ))}
-                        </div>
-                    </TechStack>
-                    <Certifications>
-                        <h4>My Certifications</h4>
-                        <div className="cert-grid">
-                            {certifications.map((cert, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="cert-item"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.05 }}
-                                    whileHover={{ scale: 1.05 }}
-                                >
-                                    <img src={cert} alt={`Certification ${index + 1}`} onClick={() => openModal(cert)} />
-                                </motion.div>
-                            ))}
-                        </div>
-                    </Certifications>
-                </AboutContent>
-            </Container>
+                <HolographicCard disableTilt={isMobile}>
+                    <AboutContent
+                        as={motion.div}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
+                    >
+                        <AboutText>
+                            <h3>Student Coder & Cybersecurity Enthusiast</h3>
+                            <p>
+                                Hi there! I'm Karthik V K, a passionate student coder and cybersecurity enthusiast.
+                                I create projects like phishing awareness tools and a plant disease identification website.
+                            </p>
+                            <p>
+                                Currently pursuing BTech in Computer Science with a specialization in Cybersecurity at SRM Institute of Science and Technology.
+                                I'm deeply interested in exploring technology and cybersecurity to make the digital world safer.
+                            </p>
+                            <p>
+                                My projects combine creativity with technical skills, focusing on real-world applications
+                                that can make a difference. Whether it's developing security tools or working on AI-powered
+                                plant disease detection, I'm always eager to learn and innovate.
+                            </p>
+                        </AboutText>
+                        <TechStack>
+                            <h4>Tech Stack</h4>
+                            <div className="tech-grid">
+                                {techStack.map((tech, index) => (
+                                    <motion.div
+                                        key={tech}
+                                        className="tech-item"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.05 }}
+                                        whileHover={{ scale: 1.05 }}
+                                    >
+                                        {tech}
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </TechStack>
+                        <Certifications>
+                            <h4>My Certifications</h4>
+                            <div className="cert-grid">
+                                {certifications.map((cert, index) => (
+                                    <motion.div
+                                        key={index}
+                                        className="cert-item"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.05 }}
+                                        whileHover={{ scale: 1.05 }}
+                                    >
+                                        <img src={cert} alt={`Certification ${index + 1}`} onClick={() => openModal(cert)} />
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </Certifications>
+                    </AboutContent>
+                </HolographicCard>
+            </AboutContainer>
             <CertModal isOpen={isModalOpen} onClose={closeModal} imgSrc={selectedCert} />
         </AboutSection>
     );
