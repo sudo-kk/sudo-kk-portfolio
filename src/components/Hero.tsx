@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Container } from '../styles/StyledComponents';
 import NetworkNodes from './NetworkNodes';
+import gifQHG from '/public/QHG.gif';
 
 const HeroSection = styled.section`
     width: 100%;
@@ -449,7 +450,7 @@ const Hero: React.FC = () => {
                         }
                     }}
                 >
-                    <img src="/QHG.gif" alt="Animated GIF" />
+                    <img src={gifQHG} alt="Animated GIF" />
                 </GifContainer>
             </StyledContainer>
         </HeroSection>

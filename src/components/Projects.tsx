@@ -6,6 +6,7 @@ import { portfolioData } from '../utils/data';
 import { Container, Section } from '../styles/StyledComponents';
 import HolographicCard from './HolographicCard';
 import NetworkNodes from './NetworkNodes';
+import gifQHG from '/public/QHG.gif';
 
 const ProjectsContainer = styled(Container)`
     display: flex;
@@ -308,7 +309,7 @@ const Projects: React.FC = () => {
                         reverse={true}
                     >
                         <ComingSoonImage>
-                            <img src="/QHG.gif" alt="Coming Soon" />
+                            <img src={gifQHG} alt="Coming Soon" />
                         </ComingSoonImage>
                         <ComingSoonCard>
                             <ComingSoonTitle>Coming Soon...</ComingSoonTitle>

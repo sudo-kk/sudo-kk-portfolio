@@ -77,7 +77,8 @@ const App: React.FC = () => {
 
     return (
         <ThemeContextProvider>
-            <Router>
+            {/* Use Vite provided BASE_URL so routes work when deployed under a subdirectory (e.g., GitHub Pages project site) */}
+            <Router basename={import.meta.env.BASE_URL}>
                 <ScrollToTop />
                 <GlobalStyles />
                 <PageWrapper>
