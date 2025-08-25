@@ -544,17 +544,17 @@ const ProjectDetail: React.FC = () => {
         {
             emoji: "🤖",
             title: "Google Gemini AI Integration",
-            description: "Powered by Google Gemini AI's advanced image recognition technology for accurate plant disease identification and analysis."
+            description: "Powered by Google Gemini AI's advanced image recognition technology for accurate plant disease identification with confidence scoring and detailed analysis."
         },
         {
             emoji: "⚡",
-            title: "FlutterFlow Development",
-            description: "Built using FlutterFlow's visual development platform, enabling rapid prototyping and seamless deployment of cross-platform applications."
+            title: "React & Cloudflare Development",
+            description: "Built with modern React architecture and deployed on Cloudflare Pages for fast, reliable performance and global edge distribution."
         },
         {
-            emoji: "📱",
-            title: "Intelligent Image Analysis",
-            description: "Upload plant images and receive instant AI-powered diagnostic results with detailed analysis and treatment recommendations."
+            emoji: "�",
+            title: "Advanced Disease Analysis",
+            description: "Provides comprehensive disease analysis with confidence levels, treatment recommendations, and detailed diagnostic information for better plant care."
         }
     ];
     
@@ -629,7 +629,7 @@ const ProjectDetail: React.FC = () => {
                                         transition={{ duration: 0.6, delay: 0.1 }}
                                         viewport={{ once: true }}
                                     >
-                                        This plant disease identification web application leverages Google Gemini AI's advanced image recognition capabilities to help farmers, gardeners, and agricultural professionals quickly identify plant diseases through intelligent image analysis. Built with FlutterFlow, the app provides an intuitive interface for uploading plant images and receiving instant AI-powered diagnostic results.
+                                        PlantAI is a sophisticated plant disease identification web application that harnesses the power of Google Gemini AI's advanced image recognition capabilities. Built with modern React architecture and deployed on Cloudflare Pages, this application provides farmers, gardeners, and agricultural professionals with a reliable tool for quick and accurate plant disease diagnosis.
                                     </motion.p>
                                     <motion.p
                                         initial={{ opacity: 0, y: 20 }}
@@ -637,7 +637,7 @@ const ProjectDetail: React.FC = () => {
                                         transition={{ duration: 0.6, delay: 0.2 }}
                                         viewport={{ once: true }}
                                     >
-                                        By integrating Google Gemini AI's powerful vision models, the application delivers highly accurate disease detection and analysis, helping users take timely action to protect their crops and maintain healthy plant growth.
+                                        The application features an intuitive interface where users can upload plant images and receive detailed AI-powered analysis including confidence scores, disease identification, and comprehensive treatment recommendations. The integration with Google Gemini AI ensures high accuracy in disease detection, helping users take timely and effective action to protect their plants.
                                     </motion.p>
                                 </ProjectDescription>
                                 
@@ -739,10 +739,10 @@ const ProjectDetail: React.FC = () => {
                     <MobileProjectCard>
                         <h3>About This Project</h3>
                         <p>
-                            This plant disease identification web application leverages Google Gemini AI's advanced image recognition capabilities to help farmers, gardeners, and agricultural professionals quickly identify plant diseases through intelligent image analysis. Built with FlutterFlow, the app provides an intuitive interface for uploading plant images and receiving instant AI-powered diagnostic results.
+                            PlantAI is a sophisticated plant disease identification web application that harnesses the power of Google Gemini AI's advanced image recognition capabilities. Built with modern React architecture and deployed on Cloudflare Pages, this application provides farmers, gardeners, and agricultural professionals with a reliable tool for quick and accurate plant disease diagnosis.
                         </p>
                         <p>
-                            By integrating Google Gemini AI's powerful vision models, the application delivers highly accurate disease detection and analysis, helping users take timely action to protect their crops and maintain healthy plant growth.
+                            The application features an intuitive interface where users can upload plant images and receive detailed AI-powered analysis including confidence scores, disease identification, and comprehensive treatment recommendations. The integration with Google Gemini AI ensures high accuracy in disease detection, helping users take timely and effective action to protect their plants.
                         </p>
 
                         <MobileTechStack>
@@ -904,7 +904,7 @@ const ProjectDetail: React.FC = () => {
                                                 transition={{ duration: 0.5, delay: 0.3 }}
                                                 viewport={{ once: true }}
                                             >
-                                                FlutterFlow Development
+                                                React & Cloudflare Development
                                             </FeatureTitle>
                                         </div>
                                         <FeatureDescription
@@ -913,7 +913,7 @@ const ProjectDetail: React.FC = () => {
                                             transition={{ duration: 0.5, delay: 0.4 }}
                                             viewport={{ once: true }}
                                         >
-                                            Built using FlutterFlow's visual development platform, enabling rapid prototyping and seamless deployment of cross-platform applications.
+                                            Built with modern React architecture and deployed on Cloudflare Pages for fast, reliable performance and global edge distribution.
                                         </FeatureDescription>
                                     </FeatureCard>
                                 </HolographicCard>
@@ -953,7 +953,7 @@ const ProjectDetail: React.FC = () => {
                                                 transition={{ duration: 0.5, delay: 0.4 }}
                                                 viewport={{ once: true }}
                                             >
-                                                Intelligent Image Analysis
+                                                Advanced Disease Analysis
                                             </FeatureTitle>
                                         </div>
                                         <FeatureDescription
@@ -962,7 +962,7 @@ const ProjectDetail: React.FC = () => {
                                             transition={{ duration: 0.5, delay: 0.5 }}
                                             viewport={{ once: true }}
                                         >
-                                            Upload plant images and receive instant AI-powered diagnostic results with detailed analysis and treatment recommendations.
+                                            Provides comprehensive disease analysis with confidence levels, treatment recommendations, and detailed diagnostic information for better plant care.
                                         </FeatureDescription>
                                     </FeatureCard>
                                 </HolographicCard>
