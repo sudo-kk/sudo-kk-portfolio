@@ -12,7 +12,7 @@ export const portfolioData: PortfolioData = {
             featured: true,
             category: "ai",
             liveUrl: "https://plant-ai-detection.pages.dev",
-            githubUrl: "https://github.com/sudo-kk/plantai"
+            githubUrl: "https://github.com/sudo-kk/plant-ai-detection"
         }
     ],
     skills: [
