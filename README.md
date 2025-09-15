@@ -45,23 +45,3 @@ src/
 ├── types/              # TypeScript type definitions
 └── utils/              # Utility functions and data
 ```
-
-### Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-### Browser Support
-
-Modern browsers including Chrome, Firefox, Safari, and Edge with ES6+ support.
