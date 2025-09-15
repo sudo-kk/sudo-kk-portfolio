@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with React and TypeScript, showcasi
 
 ## Live Website
 
-Visit the live site at: **https://karthik-is-a.dev**
+Visit the live site at: **https://karthik.is-a.dev**
 
 ## Deployment
 
