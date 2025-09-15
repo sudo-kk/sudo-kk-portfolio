@@ -4,13 +4,13 @@ import { Container } from '../styles/StyledComponents';
 import NetworkNodes from './NetworkNodes';
 
 const ContactSection = styled.section`
-    padding: 3rem 0;
+    padding: 0.5rem 0 0 0;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
+    min-height: 10vh;
     overflow: hidden;
 `;
 
